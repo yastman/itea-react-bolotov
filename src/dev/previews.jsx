@@ -1,9 +1,15 @@
 import React from "react";
-import { Previews } from "@react-buddy/ide-toolbox";
+import { ComponentPreview, Previews } from "@react-buddy/ide-toolbox";
 import { PaletteTree } from "./palette";
 
 const ComponentPreviews = () => {
-  return <Previews palette={<PaletteTree />}></Previews>;
+  return (
+    <Previews palette={<PaletteTree />}>
+      <ComponentPreview path="/App">
+        <App />
+      </ComponentPreview>
+    </Previews>
+  );
 };
 
 export default ComponentPreviews;
