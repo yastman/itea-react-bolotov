@@ -1,6 +1,6 @@
 import { UserBlock } from "../../features/UsersBlock/UserBlock";
-import { userProfiles } from "../../consts";
-
+import { userProfiles } from "../../Data/UsersInfo";
+import "./Profile.scss";
 export const Profile = () => {
   const renderProfile = (userInfo) => (
     <>
@@ -10,9 +10,11 @@ export const Profile = () => {
     </>
   );
   return (
-    <>
-      <h1>Profile Settings</h1>
-      {renderProfile(userProfiles)}
-    </>
+    <div className="profile">
+      <div className="profile__title">
+        <h1>Profile Settings</h1>
+      </div>
+      <div className="profile__container">{renderProfile(userProfiles)}</div>
+    </div>
   );
 };

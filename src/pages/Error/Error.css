@@ -1,0 +1,32 @@
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+}
+.error__container {
+  border: 1px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.error__title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.error__link {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.error__link:hover {
+  background-color: #0056b3;
+}
+
+/*# sourceMappingURL=Error.css.map */

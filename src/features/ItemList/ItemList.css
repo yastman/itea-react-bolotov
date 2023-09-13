@@ -1,0 +1,30 @@
+.item-list {
+  background-color: #f9f9f9;
+}
+.item-list__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+.item-list__container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+.item-list__container__card {
+  flex-basis: calc(20% - 20px);
+  background-color: #fff;
+  border: 1px solid #ccc;
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+.item-list__container__card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*# sourceMappingURL=ItemList.css.map */

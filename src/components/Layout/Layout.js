@@ -1,20 +1,19 @@
-import ResponsiveAppBar from "../Header/Header";
+import { Header } from "../Header/Header";
+import "./Layout.scss";
 import Footer from "../Footer/Footer";
-import styled from "styled-components";
-
-const Container = styled.div`
-  max-width: 1200px;
-  margin: 0 auto;
-`;
 
 export const Layout = ({ children }) => {
   return (
-    <>
-      <ResponsiveAppBar />
-      <Container>
+    <div className="layout">
+      <div className="layout__header">
+        <Header />
+      </div>
+      <div className="layout__container">
         <main>{children}</main>
-      </Container>
-      <Footer />
-    </>
+      </div>
+      <div className="layout__footer">
+        <Footer />
+      </div>
+    </div>
   );
 };

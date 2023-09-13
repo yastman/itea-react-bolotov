@@ -1,0 +1,31 @@
+.footer {
+  background: gray;
+  color: white;
+}
+.footer__container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer__container-category {
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+.footer__container-category__item {
+  margin: 0 10px;
+  text-transform: uppercase;
+}
+.footer__container__link {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s ease;
+}
+.footer__container__link:hover {
+  color: lightgray;
+}
+
+/*# sourceMappingURL=Footer.css.map */

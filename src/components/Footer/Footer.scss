@@ -1,0 +1,35 @@
+.footer {
+  background: gray;
+  color: white; // Установим цвет текста белым для контраста на сером фоне
+
+  &__container {
+    margin: 0 auto;
+    max-width: 1200px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &-category {
+      padding: 0;
+      margin: 0;
+      flex: 1;
+
+      // Если есть дополнительные стили для категорий
+      &__item {
+        margin: 0 10px;
+        text-transform: uppercase;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: lightgray;
+      }
+    }
+  }
+}

@@ -1,11 +1,20 @@
 import { Link } from "react-router-dom";
+import "./Error.scss";
 
 export const Error = () => {
   return (
-    <>
-      <h1>Error</h1>
-      <Link to="/profile"> Go to Profile</Link>
-      <Link to="/home"> Go to Home</Link>
-    </>
+    <div className="error">
+      <div className="error__container">
+        <h1 className="error__title">Error</h1>
+        <Link className="error__link" to="/profile">
+          {" "}
+          Go to Profile
+        </Link>
+        <Link className="error__link" to="/home">
+          {" "}
+          Go to Home
+        </Link>
+      </div>
+    </div>
   );
 };
