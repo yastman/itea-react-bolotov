@@ -11,6 +11,4 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
-}
-
-/*# sourceMappingURL=FavoriteMoviesList.css.map */
+}/*# sourceMappingURL=FavoriteMoviesList.css.map */

@@ -1,4 +1,4 @@
-import { CategoryList } from "../../features/CategoryList/CategoryList";
+import { CategoryList } from "../CategoryList/CategoryList";
 import "./Header.scss";
 import { Link } from "react-router-dom";
 

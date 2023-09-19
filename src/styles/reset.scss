@@ -4,9 +4,8 @@
 @import "src/components/ItemCard/ItemCard";
 @import "src/components/Layout/Layout";
 @import "src/components/ModalWindow/ModalWindow";
-@import "src/features/CategoryList/CategoryList";
-@import "src/features/ItemList/ItemList";
-@import "src/features/UsersBlock/UserBlock";
+@import "../components/CategoryList/CategoryList";
+@import "../components/ItemList/ItemList";
 
 /***
     The new CSS reset - version 1.9 (last updated 19.6.2023)

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { ItemCard } from "../../components/ItemCard/ItemCard";
+import { ItemCard } from "../ItemCard/ItemCard";
 import "./ItemList.scss";
-import { ViewedItemList } from "../../components/ViewedMoviesList/ViewedMoviesList";
-import { FavoriteMoviesList } from "../../components/FavoriteMoviesList/FavoriteMoviesList";
+import { ViewedItemList } from "../ViewedMoviesList/ViewedMoviesList";
+import { FavoriteMoviesList } from "../FavoriteMoviesList/FavoriteMoviesList";
 
-export const ItemList = ({ movies, categoryTitle }) => {
+export const ItemList = ({ movies }) => {
   // Viewed films
   const [viewedItems, setViewedItems] = useState([]);
   const viewedItem = (id) => {
@@ -14,7 +14,6 @@ export const ItemList = ({ movies, categoryTitle }) => {
   const viewedItemsList = movies.filter((movie) =>
     viewedItems.includes(movie.id),
   );
-  ;
   // Favorite films
   const [favoriteFilms, setFavoriteFilms] = useState([]);
   const markAsFavorite = (id) => {

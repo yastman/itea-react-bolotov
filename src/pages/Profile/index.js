@@ -1,25 +1,22 @@
-import { UserBlock } from "../../features/UsersBlock/UserBlock";
-import { userProfiles } from "../../Data/UsersInfo";
 import "./Profile.scss";
-import { ViewedMoviesList } from "../../components/ViewedMoviesList/ViewedMoviesList";
+import { userProfiles } from "../../Data/UsersInfo";
+import { UserBlock } from "../../components/UserBlock/UserBlock";
 
 export const Profile = () => {
-  const renderProfile = (userInfo) => (
+  const renderProfile = (profiles) => (
     <>
-      {userInfo.map((user) => (
-        <UserBlock key={user.id} user={user} />
+      {profiles.map((user) => (
+        <UserBlock key={user.id} user={user} /> // Использование корректного имени компонента
       ))}
     </>
   );
+
   return (
     <div className="profile">
       <div className="profile__title">
-        <h1>Profile Settings</h1>
+        <h1>Profile</h1>
       </div>
       <div className="profile__container">{renderProfile(userProfiles)}</div>
-      {/*<div className="profile__viewed-movie-list">
-        <ViewedMoviesList viewedMovies={viewedMoviesList} />
-      </div>*/}
     </div>
   );
 };

@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   border: black;
+
   .material-symbols-outlined {
     font-variation-settings:
       "FILL" 0,
@@ -17,6 +18,7 @@
       "opsz" 24;
     color: red;
     font-size: 24px;
+
     &:hover {
       // стили для иконки при наведении мыши, если нужны
       color: white;
