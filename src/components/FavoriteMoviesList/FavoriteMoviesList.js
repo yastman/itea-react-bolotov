@@ -1,20 +1,17 @@
 import { ItemCard } from "../ItemCard/ItemCard";
 import "./FavoriteMoviesList.scss";
+export const FavoriteMoviesList = ({ favoriteFilms, films }) => {
+  const favoriteMovies = films.filter((film) =>
+    favoriteFilms.includes(film.id)
+  );
+  if (!favoriteMovies.length) return null;
 
-export const FavoriteMoviesList = ({ favoriteFilms }) => {
-  if (favoriteFilms.length === 0) {
-    return null;
-  }
   return (
     <div className="favorite-movies-list">
-      <div className="favorite-movies-list__title">
-        <h2>Улюблені</h2>
-      </div>
+      <h2>Favorite</h2>
       <div className="favorite-movies-list__container">
-        {favoriteFilms.map((movie) => (
-          <div className="favorite-movies-list__card" key={movie.id}>
-            <ItemCard movie={movie} />
-          </div>
+        {favoriteMovies.map((film) => (
+          <ItemCard key={film.id} film={film} />
         ))}
       </div>
     </div>

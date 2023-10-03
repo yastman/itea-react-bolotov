@@ -1,63 +1,63 @@
 import React, { useState } from "react";
 import { ItemCard } from "../ItemCard/ItemCard";
-import "./ItemList.scss";
-import { ViewedItemList } from "../ViewedMoviesList/ViewedMoviesList";
+import { ViewedItemList } from "../ViewedItemList/ViewedItemList";
 import { FavoriteMoviesList } from "../FavoriteMoviesList/FavoriteMoviesList";
+import { useSelector } from "react-redux";
 
-export const ItemList = ({ movies }) => {
-  // Viewed films
+export const ItemList = ({ films: externalFilms }) => {
+  const reduxFilms = useSelector((state) => state.films.items);
+  const films = externalFilms || reduxFilms;
+
   const [viewedItems, setViewedItems] = useState([]);
-  const viewedItem = (id) => {
-    setViewedItems((previewedItems) => [...previewedItems, id]);
-  };
-
-  const viewedItemsList = movies.filter((movie) =>
-    viewedItems.includes(movie.id),
-  );
-  // Favorite films
   const [favoriteFilms, setFavoriteFilms] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  console.log("Current search term:", searchTerm); // Проверка инициализации searchTerm
+  console.log("Films:", films); // Проверка приходящего массива фильмов
+
+  // Проверка на наличие свойства title у всех фильмов
+  films.forEach((film, index) => {
+    if (!film.title) {
+      console.log(`Film at index ${index} does not have a title`);
+    }
+  });
+
+  const viewedItem = (id) => {
+    setViewedItems([...viewedItems, id]);
+  };
+
   const markAsFavorite = (id) => {
-    setFavoriteFilms((prevFavoriteFilms) => [...prevFavoriteFilms, id]);
+    setFavoriteFilms([...favoriteFilms, id]);
   };
 
-  const favoriteItemList = movies.filter((movie) =>
-    favoriteFilms.includes(movie.id),
-  );
-
-  // Search films
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredMovies = movies.filter((movie) =>
-    movie.title.toLowerCase().includes(searchQuery.toLowerCase()),
-  );
+  const filteredFilms = films.filter((film) => {
+    if (!film || !film.titleText || !film.titleText.text) {
+      console.log("Skipping undefined or incomplete film:", film);
+      return false;
+    }
+    return film.titleText.text.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="item-list">
       <input
         type="text"
-        value={searchQuery}
-        onChange={handleSearch}
-        placeholder="Search movies"
+        placeholder="Поиск..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <div className="item-list__title"></div>
       <div className="item-list__container">
-        {filteredMovies.map((movie) => (
-          <div className="item-list__card" key={movie.id}>
-            <ItemCard
-              movie={movie}
-              viewedItem={() => viewedItem(movie.id)}
-              markAsFavorite={() => markAsFavorite(movie.id)}
-            />
-          </div>
+        {filteredFilms.map((film) => (
+          <ItemCard
+            key={film.id}
+            film={film}
+            markAsFavorite={markAsFavorite}
+            markAsViewed={viewedItem}
+          />
         ))}
       </div>
-
-      <ViewedItemList viewedItems={viewedItemsList} />
-      <FavoriteMoviesList favoriteFilms={favoriteItemList} />
+      <ViewedItemList viewedItems={viewedItems} films={films} />
+      <FavoriteMoviesList favoriteFilms={favoriteFilms} films={films} />
     </div>
   );
 };

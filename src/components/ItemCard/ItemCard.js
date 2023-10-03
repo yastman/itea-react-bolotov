@@ -1,49 +1,53 @@
-import { useState } from "react"; //
-import { ModalWindow } from "../ModalWindow/ModalWindow";
-import { HoverRating } from "../Rating/HoverRating";
+import { useState } from "react";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton";
+import { ModalWindow } from "../ModalWindow/ModalWindow";
 
-export const ItemCard = ({
-  viewedItem,
-  markAsFavorite,
-  movie: { id, title, year, description, image },
-}) => {
+export const ItemCard = ({ film, markAsFavorite, markAsViewed }) => {
+  const {
+    titleText: { text },
+    releaseYear: { year },
+    primaryImage,
+  } = film;
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => {
-    setIsOpen(true);
-    viewedItem(id);
-  };
+    console.log("handleOpen was triggered");
 
-  const handleFavorite = () => {
-    markAsFavorite(id);
+    setIsOpen(true);
   };
   const handleClose = () => {
-    setIsOpen(() => {
-      return false;
-    });
+    setIsOpen(false);
   };
 
   return (
     <div className="item-card">
-      <div className="item-card__favorite-button" onClick={handleFavorite}>
-        <FavoriteButton />
+      <div className="item-card__favorite-button">
+        <FavoriteButton
+          onClick={() => {
+            markAsFavorite(film.id);
+          }}
+        />
       </div>
-      <div className="item-card__image" onClick={handleOpen}>
-        <img src={image} alt={title} />
+      <div
+        className="item-card__image"
+        onClick={() => {
+          handleOpen();
+          markAsViewed(film.id);
+        }}
+      >
+        {primaryImage && <img src={primaryImage.url} alt={text} />}
       </div>
-      <HoverRating />
-      <div className="item-card__title">
-        <p>{title}</p>
+      <div className="item-card__content">
+        <div className="item-card__title">
+          <p>{text}</p>
+        </div>
+        <div className="item-card__year">
+          <p>Year: {year}</p>
+        </div>
+        <div className="item-card_modal-window">
+          <ModalWindow isOpen={isOpen} onClose={handleClose} film={film} />
+        </div>
       </div>
-      <div className="item-card__year">
-        <p>Year: {year}</p>
-      </div>
-      <ModalWindow
-        isOpen={isOpen}
-        onClose={handleClose}
-        movie={{ title, year, description, image }}
-      />
     </div>
   );
 };

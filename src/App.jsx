@@ -3,16 +3,21 @@ import { AppRoutes } from "./AppRoutes/AppRoutes";
 import { Layout } from "./components/Layout/Layout";
 import "./styles/reset.scss";
 import "./styles/global.scss";
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const App = () => {
   return (
+    <Provider store={store}>
+
     <Router>
-      <div className="container">
+    <div className="container">
         <Layout>
           <AppRoutes />
         </Layout>
       </div>
     </Router>
-  );
-};
+    </Provider>
+    );
+  };
 export default App;

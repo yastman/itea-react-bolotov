@@ -1,11 +1,12 @@
 import { ItemList } from "../../components/ItemList/ItemList";
-import { movies } from "../../Data/Movies";
+import { useFilms } from "../../features/films/useFilms";
 
 export const Home = () => {
+  const films = useFilms();
   return (
     <>
       <h1>Online cinema</h1>
-      <ItemList movies={movies} />
+      <ItemList films={films} />
     </>
   );
 };
